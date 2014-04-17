@@ -53,11 +53,11 @@ def pessoaPesquisar(request):
                     (Q(nome__contains=textoBusca) |  
                     Q(email__contains=textoBusca) | 
                     Q(telefone__contains=textoBusca) | 
-                    Q(logradouro__contains=textoBusca))).order_by('-nome')  #BUSCA POR NOME OU EMAIL OU TELEFONE OU LOGRADOURO... E É ORDENADO POR NOME.
+                    Q(logradouro__contains=textoBusca))).order_by('-nome')
         except:
             pessoas = []
 
-        return render(request, 'pessoas/listaPessoas.html', {'pessoas': pessoas, 'textoBusca': textoBusca})
+        return render(request, 'pessoas/listaPessoas.html', {'pessoa': pessoas, 'textoBusca': textoBusca})
 
 def pessoaEditar(request, pk=0):
     try:
@@ -74,12 +74,3 @@ def pessoaExcluir(request, pk=0):
         return HttpResponseRedirect('/pessoas/')
     except:
         return HttpResponseRedirect('/pessoas/')
-
-
-
-
-    
-
-
-
-
